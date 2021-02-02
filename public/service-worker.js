@@ -1,4 +1,4 @@
-const FILE_TO_CACHE = [
+var urlsToCache = [
     "/",
     "/db.js",
     "/index.js",
@@ -8,14 +8,14 @@ const FILE_TO_CACHE = [
     "/icons/icon-512x512.png"
 ];
 
-var CACHE_NAME = "pwa-budget-cache-v1";
+var CACHE_NAME = "my-site-cache-v1";
 const DATA_CACHE_NAME = "data-cache-v1";
 
 self.addEventListener("install", function(event) {
     event.waitUntil(
-        caches.open(CACHE_NAME).then(cache => {
+        caches.open(CACHE_NAME).then(function(cache) {
             console.log("Your files were pre-cached successfully!");
-            return cache.addAll(FILES_TO_CACHE);
+            return cache.addAll(urlsToCache);
         })
     )
 });
